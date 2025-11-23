@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mini Social App</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- AUTH CONTAINER -->
+<div id="auth-container">
+    <!-- SIGN UP -->
+    <div id="signup-box" class="auth-box">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-name" placeholder="Name" />
+        <input type="email" id="signup-email" placeholder="Email" />
+        <input type="password" id="signup-password" placeholder="Password" />
+        <input type="text" id="signup-profile" placeholder="Profile Image URL (optional)" />
+        <button id="signup-btn">Sign Up</button>
+        <p>Already have an account? <span id="go-to-login">Login</span></p>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="login-box" class="auth-box hidden">
+        <h2>Login</h2>
+        <input type="email" id="login-email" placeholder="Email" />
+        <input type="password" id="login-password" placeholder="Password" />
+        <button id="login-btn">Login</button>
+        <p>No account? <span id="go-to-signup">Sign Up</span></p>
+    </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="main-app" class="hidden">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="left-sidebar">
+        <div class="profile-section">
+            <img src="images/profile1.jpg" id="profile-pic" class="profile-img" alt="Profile">
+            <h3 id="left-username">User Name</h3>
+        </div>
+        <div class="sidebar-buttons">
+            <button class="sidebar-btn">🏠 Home</button>
+            <button class="sidebar-btn">🧑‍🤝‍🧑 Friends</button>
+            <button class="sidebar-btn">📝 Posts</button>
+        </div>
+    </aside>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-left">
+            <span class="logo">MiniSocial</span>
+        </div>
+        <div class="header-middle">
+            <button class="nav-btn">Home</button>
+            <button class="nav-btn">Story</button>
+            <button class="nav-btn">Timeline</button>
+        </div>
+        <div class="header-right">
+            <button id="toggle-theme" class="icon-btn">🌙</button>
+            <button id="logout-btn" class="icon-btn">Logout</button>
+        </div>
+    </header>
+
+    <!-- MAIN FEED -->
+    <main>
+        <section class="create-post">
+            <div class="create-grid">
+                <img src="images/profile1.jpg" id="small-profile" class="small-profile" alt="you">
+                <div style="flex:1">
+                    <textarea id="post-text" placeholder="What's on your mind?"></textarea>
+                    <input type="text" id="post-image" placeholder="Image URL (optional)" />
+                    <div class="create-controls">
+                        <div class="left">
+                            <input type="file" id="post-image-file" accept="image/*" hidden>
+                            <label for="post-image-file" class="file-label">Upload (optional)</label>
+                        </div>
+                        <div class="right">
+                            <button id="post-btn" class="primary-btn">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="controls">
+            <input id="search-posts" placeholder="Search posts..." />
+            <select id="sort-posts">
+                <option value="latest">Latest</option>
+                <option value="oldest">Oldest</option>
+                <option value="mostliked">Most Liked</option>
+            </select>
+        </section>
+
+        <section id="posts-feed" class="posts-feed"></section>
+    </main>
+
+    <!-- EDIT POST MODAL -->
+    <div id="edit-modal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content">
+            <h3>Edit Post</h3>
+            <textarea id="edit-text" placeholder="Edit your post"></textarea>
+            <input id="edit-image" placeholder="Image URL (optional)" />
+            <div class="modal-buttons">
+                <button id="save-edit" class="primary-btn">Save</button>
+                <button id="cancel-edit" class="ghost-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMENTS MODAL -->
+    <div id="comments-modal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content comments-modal-content">
+            <div class="comments-header">
+                <h3>Comments</h3>
+                <button id="close-comments" class="ghost-btn">Close</button>
+            </div>
+            <div id="comments-list" class="comments-list"></div>
+            <div class="add-comment">
+                <input id="comment-input" placeholder="Write a comment..." />
+                <button id="add-comment-btn" class="primary-btn">Add</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
